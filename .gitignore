@@ -1,5 +1,7 @@
 *.iml
-*.idea
 *.project
 *.classpath
+*.idea
+.project
 .pydevproject
+**/__pycache__
