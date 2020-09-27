@@ -1,20 +1,19 @@
 import numpy as np
 from scipy.io import loadmat
-import matplotlib.image as mpimg
-import matplotlib.pyplot as plt
+
+# 5000 training example and 20*20 pixel (400 features)
+from week4.utils import displayData
 
 mat = loadmat('ex3data1.mat')
 
-X= mat['X']
-y=mat['y']
+X= mat['X'] #5000
+y=mat['y'] #400
 y[y==10] = 0
-print(X.shape)
-print(y)
 
-fig, axis = plt.subplots(10,10,figsize=(8,8))
-for i in range(10):
-    for j in range(10):
-        axis[i,j].imshow(X[np.random.randint(0,5001),:].reshape(20,20,order="F"), cmap="hot") #reshape back to 20 pixel by 20 pixel
-        axis[i,j].axis("off")
+#select random 100 training examples
+random_X_indexes=np.random.choice(y.size, 100, replace=False)
+random_X=X[random_X_indexes,:]
+print(random_X)
+displayData(random_X)
+
 exit(0)
-
